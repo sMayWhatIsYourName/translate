@@ -1,0 +1,27 @@
+.wrapper {
+  padding: 25px 50px 30px 50px;
+  box-sizing: border-box;
+}
+
+.languages {
+  width: 205px;
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.lang {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.lang, .replace {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}

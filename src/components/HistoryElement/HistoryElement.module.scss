@@ -1,0 +1,44 @@
+.element {
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.element:hover {
+  transition: 0.3s;
+  background-color: #1E2225;
+}
+
+.text {
+  color: #B3B4B6;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.from {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  justify-content: space-between;
+}
+
+.outter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.lang {
+  font-size: 14px;
+  line-height: 24px;
+  color: #414548;
+}

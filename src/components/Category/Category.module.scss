@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  border-radius: 3%;
+  padding: 12px 15px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chosen {
+  background-color: #7961FB;
+}
+
+.name {
+  margin: 0 auto 0 12px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  color: #fff;
+}
+
+.count {
+  color: #727577;
+  font-size: 12px;
+}
+
+.chosen .count {
+  color: #fff;
+}
+
+.wrapper:hover {
+  background-color: #7961FB;
+  transition: 0.3s;
+}
+
+.wrapper:hover .count {
+  color: #fff;
+  transition: 0.3s;
+}

@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+
+import { Header } from './components/Header/Header';
+import { History } from './components/History/History';
+import { InputSection } from './components/InputSection/InputSection';
+import { ITranslation } from './interfaces/translator.interface';
+import { CategoryContext } from './contexts/index';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { history, languages } = useSelector((state: ITranslation) => state);
+  const [category, setCategory] = useState<string>('All items');
+  useEffect(() => {
+    window.addEventListener('beforeunload', (e) => {
+      localStorage.setItem('history', JSON.stringify(history));
+      localStorage.setItem('languages', JSON.stringify(languages));
+    });
+  })
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <h1 className='visually-hidden'>Text translation</h1>
+      <CategoryContext.Provider value={{ category, setCategory }}>
+        <Header />
+        <History />
+      </CategoryContext.Provider>
+      <InputSection />
+    </>
+  );
 }
 
 export default App
