@@ -32,4 +32,4 @@ export const Header = (props: HeaderProps): JSX.Element => {
       }
     </header>
   );
-}
+};

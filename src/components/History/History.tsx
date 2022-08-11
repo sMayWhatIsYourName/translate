@@ -38,4 +38,4 @@ export const History = (props: HistoryProps): JSX.Element => {
         .map((item) => <HistoryElement key={item.id} historyId={item.id} />)}
     </div>
   );
-}
+};

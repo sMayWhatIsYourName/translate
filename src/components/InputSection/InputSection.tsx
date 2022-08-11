@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -10,7 +10,7 @@ import styles from './InputSection.module.scss';
 import { InputSectionProps } from './InputSection.props';
 import { actions } from '../../slices/translator.slice';
 
-export const InputSection = (props: InputSectionProps): JSX.Element => {
+export const InputSection = memo((props: InputSectionProps): JSX.Element => {
   const { from, to } = useSelector((state: ITranslation) => state.current);
   const dispatch = useDispatch();
   const [isToOpen, setIsToOpen] = useState<boolean>(false);
@@ -29,4 +29,4 @@ export const InputSection = (props: InputSectionProps): JSX.Element => {
       <Form />
     </main>
   );
-}
+});

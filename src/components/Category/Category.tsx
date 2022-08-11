@@ -3,10 +3,10 @@ import cn from 'classnames';
 import styles from './Category.module.scss';
 import { CategoryProps } from './Category.props';
 import { Icon } from '../Icon/Icon';
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { CategoryContext } from '../../contexts';
 
-export const Category = ({ name, count, icon, ...props }: CategoryProps): JSX.Element => {
+export const Category = memo(({ name, count, icon, ...props }: CategoryProps): JSX.Element => {
   const { category, setCategory } = useContext(CategoryContext);
   return (
     <li className={cn(styles.wrapper, {
@@ -17,4 +17,4 @@ export const Category = ({ name, count, icon, ...props }: CategoryProps): JSX.El
       <span className={styles.count}>{count}</span>
     </li>
   );
-}
+});

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -12,10 +12,10 @@ import { IForm } from '../../interfaces/form.interface';
 import { AppDispatch } from '../../slices';
 import { fetchTranslate } from '../../slices/translator.slice';
 
-export const Form = (props: FormProps): JSX.Element => {
+export const Form = memo((props: FormProps): JSX.Element => {
   const { from, to } = useSelector((state: ITranslation) => state.current);
-  const { register, setFocus, handleSubmit, getValues, resetField, setValue } = useForm<IForm>({ defaultValues: { text: from.text } });
-  const text = getValues('text');
+  const { register, setFocus, handleSubmit, watch, resetField, setValue } = useForm<IForm>({ defaultValues: { text: from.text } });
+  const text = watch('text');
   const dispatch = useDispatch<AppDispatch>();
   const onSubmit: SubmitHandler<IForm> = ({ text }) => {
     dispatch(fetchTranslate({ to: to.lang, text }));
@@ -27,7 +27,7 @@ export const Form = (props: FormProps): JSX.Element => {
     setValue('text', from.text);
   }, [from.text])
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)} {...props}>
       <div className={styles.translationWrapper}>
         <div className={cn(styles.field, styles.m10)}>
           <textarea spellCheck={false} className={styles.input} {...register('text', { required: true })}></textarea>
@@ -51,6 +51,7 @@ export const Form = (props: FormProps): JSX.Element => {
                 const voices = speechSynthesis.getVoices();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.voice = voices[0];
+                utterance.lang = 'ru';
                 speechSynthesis.speak(utterance);
               }}>
                 <Icon type='listen' />
@@ -88,4 +89,4 @@ export const Form = (props: FormProps): JSX.Element => {
       </div>
     </form>
   );
-}
+})

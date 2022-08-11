@@ -11,7 +11,7 @@ function App() {
   const { history, languages } = useSelector((state: ITranslation) => state);
   const [category, setCategory] = useState<string>('All items');
   useEffect(() => {
-    window.addEventListener('beforeunload', (e) => {
+    window.addEventListener('beforeunload', () => {
       localStorage.setItem('history', JSON.stringify(history));
       localStorage.setItem('languages', JSON.stringify(languages));
     });
