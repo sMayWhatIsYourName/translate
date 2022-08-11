@@ -30,7 +30,7 @@ export const Form = (props: FormProps): JSX.Element => {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.translationWrapper}>
         <div className={cn(styles.field, styles.m10)}>
-          <textarea className={styles.input} {...register('text', { required: true })}></textarea>
+          <textarea spellCheck={false} className={styles.input} {...register('text', { required: true })}></textarea>
           <div className={styles.outter}>
             {
               text.length > 0
