@@ -7,7 +7,7 @@ import { ITranslation } from '../../interfaces/translator.interface';
 import { Icon } from '../Icon/Icon';
 
 import styles from './Form.module.scss';
-import { FormProps } from './Form.props';
+import { FormProps } from './ChooseLanguage.props';
 import { IForm } from '../../interfaces/form.interface';
 import { AppDispatch } from '../../slices';
 import { fetchTranslate } from '../../slices/translator.slice';
