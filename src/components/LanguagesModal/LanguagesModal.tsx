@@ -26,7 +26,9 @@ export const LanguagesModal = ({ current, close, forLang, ...props }: LanguagesM
     }
   };
   useEffect(() => {
-    setFocus('search');
+    if (window.innerWidth > 770) {
+      setFocus('search');
+    }
   });
   return createPortal(
     <div className={styles.modal}>

@@ -17,12 +17,6 @@
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 1024px) {
-  .history {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .menu {
     display: grid;
@@ -35,5 +29,24 @@
   
   .categories {
     display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .history {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .content {
+    position: absolute;
+    right: 0;
+    left: 80px;
+    height: 700px;
+  }
+
+  .full {
+    grid-template-columns: 50px;
   }
 }

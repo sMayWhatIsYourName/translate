@@ -42,7 +42,9 @@ export const Menu = (props: MenuProps): JSX.Element => {
             </button>
         }
       </div>
-      {/* <div className={cn(styles.content)}> */}
+      <div className={cn({
+        [styles.content]: isOpen,
+      })}>
         {
           isOpen
             ?
@@ -54,7 +56,7 @@ export const Menu = (props: MenuProps): JSX.Element => {
             :
             null
         }
-      {/* </div> */}
+      </div>
     </div>
   );
 };
