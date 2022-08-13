@@ -6,4 +6,24 @@
   flex-direction: column;
   gap: 20px 0;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #7961FB #1E2225;
+  scrollbar-gutter: stable;
+}
+
+@media screen and (max-width: 1024px) {
+  .history {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .history {
+    padding: 0;
+    height: 700px;
+  }
+}
+
+.visible {
+  display: flex;
 }

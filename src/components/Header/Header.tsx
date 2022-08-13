@@ -5,12 +5,18 @@ import { HeaderProps } from './Header.props';
 import { Category } from '../Category/Category';
 import { ITranslation } from '../../interfaces/translator.interface';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { Icon } from '../Icon/Icon';
 
-export const Header = (props: HeaderProps): JSX.Element => {
+export const Header = ({ visible, ...props }: HeaderProps): JSX.Element => {
+  console.log(visible);
+  
   const { history, languages } = useSelector((state: ITranslation) => state);
   const favCount = history.filter((lang) => lang.isFavorite).length;
   return (
-    <header className={styles.header} {...props}>
+    <header className={cn(styles.header, {
+      [styles.visible]: visible,
+    })} {...props}>
       <div>
         <h2 className={styles.headling}>Types</h2>
         <ul className={styles.list}>
@@ -30,6 +36,6 @@ export const Header = (props: HeaderProps): JSX.Element => {
           :
           null
       }
-    </header>
+    </header >
   );
 };

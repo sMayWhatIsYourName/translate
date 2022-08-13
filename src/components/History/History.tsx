@@ -8,7 +8,7 @@ import { HistoryElement } from '../HistoryElement/HistoryElement';
 import styles from './History.module.scss';
 import { HistoryProps } from './History.props';
 
-export const History = (props: HistoryProps): JSX.Element => {
+export const History = ({ visible, ...props }: HistoryProps): JSX.Element => {
   const { history } = useSelector((state: ITranslation) => state);
   const { category } = useContext(CategoryContext);
   const copy = [...history];
@@ -32,7 +32,9 @@ export const History = (props: HistoryProps): JSX.Element => {
       filtered = copy.filter((item) => item.from.lang === category || item.to.lang === category);
   }
   return (
-    <div className={styles.history} {...props}>
+    <div className={cn(styles.history, {
+      [styles.visible]: visible,
+    })} {...props}>
       {filtered
         .reverse()
         .map((item) => <HistoryElement key={item.id} historyId={item.id} />)}

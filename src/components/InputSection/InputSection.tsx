@@ -22,7 +22,7 @@ export const InputSection = memo((props: InputSectionProps): JSX.Element => {
         <button className={styles.lang} onClick={() => {
           setIsFromOpen((current) => !current);
         }}>{from.lang}</button>
-        <button className={styles.replace} onClick={() => {
+        <button onClick={() => {
           dispatch(actions.replaceCurrent());
         }}>
           <Icon type='replace' />

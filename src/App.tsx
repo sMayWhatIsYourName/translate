@@ -6,6 +6,7 @@ import { History } from './components/History/History';
 import { InputSection } from './components/InputSection/InputSection';
 import { ITranslation } from './interfaces/translator.interface';
 import { CategoryContext } from './contexts/index';
+import { Menu } from './components/Menu/Menu';
 
 function App() {
   const { history, languages } = useSelector((state: ITranslation) => state);
@@ -20,6 +21,7 @@ function App() {
     <>
       <h1 className='visually-hidden'>Text translation</h1>
       <CategoryContext.Provider value={{ category, setCategory }}>
+        <Menu />
         <Header />
         <History />
       </CategoryContext.Provider>

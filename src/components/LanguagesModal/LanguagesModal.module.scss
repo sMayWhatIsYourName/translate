@@ -24,12 +24,6 @@
   background-color: transparent;
 }
 
-.clearBtn {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
 .form {
   display: flex;
   justify-content: space-between;
@@ -40,8 +34,7 @@
 
 .wrapper {
   box-sizing: border-box;
-  column-count: 6;
-  height: 720px;
+  height: auto;
 }
 
 .lang {
@@ -54,9 +47,12 @@
   box-sizing: border-box;
   height: 30px;
   line-height: 100%;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+  color: #fff;
+}
+
+.err {
+  margin: 0;
+  font-size: 25px;
   color: #fff;
 }
 
@@ -68,12 +64,6 @@
   background-color: #7961FB;
 }
 
-@media screen and (max-width: 1024px) {
-  .wrapper {
-    column-count: 4;
-  }
-}
-
 @media screen and (max-width: 770px) {
   .wrapper {
     column-count: 1;
@@ -82,5 +72,18 @@
   .lang {
     width: 100%;
     padding-left: 25px;
+  }
+}
+
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+  .wrapper {
+    column-count: 4;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    column-count: 6;
+    height: 720px;
   }
 }

@@ -1,0 +1,39 @@
+.menu {
+  display: none;
+  color: #fff;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.menuWrapper {
+  padding: 23px 0;
+}
+
+.categories, .history {
+  display: none;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .history {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .menu {
+    display: grid;
+    grid-template-columns: 50px;
+  }
+  
+  .full {
+    grid-template-columns: 50px 250px;
+  }
+  
+  .categories {
+    display: block;
+  }
+}

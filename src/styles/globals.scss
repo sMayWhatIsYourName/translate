@@ -18,7 +18,8 @@ body {
   margin: 0 auto;
   background-color: #090E11;
   height: 700px;
-  width: 1280px;
+  max-width: 1280px;
+  width: 100%;
   display: grid;
   grid-template-columns: 250px 310px 1fr;
 }
@@ -36,10 +37,26 @@ body {
   overflow: hidden;
 }
 
-@media screen and (max-width: 990px) {
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  #root {
+    grid-template-columns: auto 310px 1fr;
+  }
   // #modal {
   //   width: 100%;
   // }
+}
+
+@media screen and (max-width: 1024px) {
+  #root {
+    grid-template-columns: auto 1fr;
+  }
 }
 
 @media screen and (max-width: 770px) {
