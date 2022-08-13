@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { memo } from 'react';
+import { memo, useContext } from 'react';
 
 import { Icon } from '../Icon/Icon';
 import { Fav } from '../Fav/Fav';
@@ -8,9 +8,11 @@ import styles from './HistoryElement.module.scss';
 import { HistoryProps } from './HistoryElement.props';
 import { ITranslation } from '../../interfaces/translator.interface';
 import { actions } from '../../slices/translator.slice';
+import { CloseModalContext } from '../../contexts';
 
 export const HistoryElement = memo(({ historyId, ...props }: HistoryProps): JSX.Element => {
   const history = useSelector((state: ITranslation) => state.history.find((item) => item.id === historyId));
+  const { close } = useContext(CloseModalContext);
   const dispatch = useDispatch();
   if (history === undefined) {
     return <div></div>;
@@ -19,6 +21,7 @@ export const HistoryElement = memo(({ historyId, ...props }: HistoryProps): JSX.
   return (
     <article className={styles.element} onClick={() => {
       dispatch(actions.setCurrent(historyId));
+      close();
     }} {...props}>
       <p className={cn(styles.from, styles.text)}>{from.text}</p>
       <p className={styles.text}>{to.text}</p>

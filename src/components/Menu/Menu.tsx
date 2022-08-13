@@ -1,14 +1,18 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Icon } from '../Icon/Icon';
 import styles from './Menu.module.scss';
 import { MenuProps } from './Menu.props';
 import { Header } from '../Header/Header';
 import { History } from '../History/History';
+import { CloseModalContext } from '../../contexts';
 
 export const Menu = (props: MenuProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<null | 'menu' | 'history'>(null);
+  const closeModal = () => {
+    setIsOpen(null);
+  }
   return (
     <div className={cn(styles.menu, {
       [styles.full]: isOpen,
@@ -18,7 +22,7 @@ export const Menu = (props: MenuProps): JSX.Element => {
           isOpen === 'menu'
             ?
             <>
-              <button className={cn(styles.mb20, styles.clear)} onClick={() => setIsOpen(null)}>
+              <button className={cn(styles.mb20, styles.clear)} onClick={closeModal}>
                 <Icon type='clear' />
               </button>
             </>
@@ -32,7 +36,7 @@ export const Menu = (props: MenuProps): JSX.Element => {
           isOpen === 'history'
             ?
             <>
-              <button className={styles.clear} onClick={() => setIsOpen(null)}>
+              <button className={styles.clear} onClick={closeModal}>
                 <Icon type='clear' />
               </button>
             </>
@@ -42,21 +46,23 @@ export const Menu = (props: MenuProps): JSX.Element => {
             </button>
         }
       </div>
-      <div className={cn({
-        [styles.content]: isOpen,
-      })}>
-        {
-          isOpen
-            ?
-            isOpen === 'history'
+      <CloseModalContext.Provider value={{ close: closeModal }}>
+        <div className={cn({
+          [styles.content]: isOpen,
+        })}>
+          {
+            isOpen
               ?
-              <History visible={true} />
+              isOpen === 'history'
+                ?
+                <History visible={true} />
+                :
+                <Header visible={true} />
               :
-              <Header visible={true} />
-            :
-            null
-        }
-      </div>
+              null
+          }
+        </div>
+      </CloseModalContext.Provider>
     </div>
   );
 };

@@ -9,3 +9,11 @@ export const CategoryContext = createContext<IChosenCategory>({
   setCategory: () => {},
   category: 'All items',
 });
+
+interface ICloseModal {
+  close: () => void;
+}
+
+export const CloseModalContext = createContext<ICloseModal>({
+  close: () => {},
+});
