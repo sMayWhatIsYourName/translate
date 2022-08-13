@@ -19,4 +19,5 @@ export interface ITranslation {
   languages: {
     [key: string]: number;
   };
+  isLoading: boolean;
 }

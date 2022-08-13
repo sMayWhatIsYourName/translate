@@ -16,6 +16,14 @@
   background-color: transparent;
 }
 
+.loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+}
+
 .result, .input {
   white-space: pre-wrap;
   color: #fff;

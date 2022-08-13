@@ -1,7 +1,8 @@
 import cn from 'classnames';
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { Ring } from '@uiball/loaders'
 
 import { ITranslation } from '../../interfaces/translator.interface';
 import { Icon } from '../Icon/Icon';
@@ -14,6 +15,7 @@ import { fetchTranslate } from '../../slices/translator.slice';
 
 export const Form = memo((props: FormProps): JSX.Element => {
   const { from, to } = useSelector((state: ITranslation) => state.current);
+  const isLoading = useSelector((state: ITranslation) => state.isLoading);
   const [isToSpeak, setIsToSpeak] = useState(false);
   const [isFromSpeak, setIsFromSpeak] = useState(false);
   const { register, setFocus, handleSubmit, watch, resetField, setValue } = useForm<IForm>({ defaultValues: { text: from.text } });
@@ -71,13 +73,21 @@ export const Form = memo((props: FormProps): JSX.Element => {
                   })
                 }
               }}>
-                {isFromSpeak ? <Icon type='pause' /> : <Icon type='listen' /> }
+                {isFromSpeak ? <Icon type='pause' /> : <Icon type='listen' />}
               </button>
             </div>
           </div>
         </div>
         <div className={cn(styles.field, styles.mAuto)}>
-          <div className={styles.result}>{to.text}</div>
+          {
+            isLoading
+              ?
+              <div className={styles.loader}>
+                <Ring size={45} color="#7961FB" />
+              </div>
+              :
+              <div className={styles.result}>{to.text}</div>
+          }
           <div className={styles.wrapperResult}>
             <div className={styles.inner}>
               <button type='button' className={styles.btn} onClick={() => {

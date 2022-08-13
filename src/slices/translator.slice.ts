@@ -48,6 +48,7 @@ const initialState: ITranslation = {
   },
   history,
   languages,
+  isLoading: false,
 };
 
 const translatorSlice = createSlice({
@@ -79,6 +80,9 @@ const translatorSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchTranslate.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(fetchTranslate.fulfilled, (state, { payload }) => {
         state.current = payload;
         const { to, from } = payload;
@@ -91,6 +95,7 @@ const translatorSlice = createSlice({
         state.history.push(newHistoryElement);
         state.languages[to.lang] = state.languages[to.lang] ? state.languages[to.lang] + 1 : 1;
         state.languages[from.lang] = state.languages[from.lang] ? state.languages[from.lang] + 1 : 1;
+        state.isLoading = false;
       });
   }
 });
