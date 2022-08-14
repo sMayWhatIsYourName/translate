@@ -147,17 +147,17 @@ export const languagesList: ILanguage = {
 
 export const LanguagesSupportList: ILanguage = {
   Afrikaans: 'af-ZA',
-  Arabic: 'ar-XA',
+  Arabic: 'ar-BH',
   Bengali: 'bn-IN',
   Bulgarian: 'bg-BG',
   Catalan: 'ca-ES',
-  'Chinese (Hong Kong)': 'yue-HK',
+  'Chinese (Hong Kong)': 'zh-HK',
   Czech: 'cs-CZ',
   Danish: 'da-DK',
   Dutch: 'nl-BE',
   English: 'en-US',
   Finnish: 'fi-FI',
-  French: 'fr-CA',
+  French: 'fr-FR',
   German: 'de-DE',
   Greek: 'el-GR',
   Gujarati: 'gu-IN',
@@ -186,5 +186,6 @@ export const LanguagesSupportList: ILanguage = {
   Thai: 'th-TH',
   Turkish: 'tr-TR',
   Ukrainian: 'uk-UA',
-  Vietnamese: 'vi-VN'
+  Vietnamese: 'vi-VN',
+  Uzbek: 'uz-UZ',
 };
