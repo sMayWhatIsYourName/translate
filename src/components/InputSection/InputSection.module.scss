@@ -6,10 +6,9 @@
 .languages {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   box-sizing: border-box;
-  width: 205px;
+  gap: 0 25px;
   margin-bottom: 20px;
   padding-left: 30px;
 }

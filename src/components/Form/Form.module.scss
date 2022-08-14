@@ -54,6 +54,10 @@
   display: flex;
   justify-content: space-between;
 
+  width: min-content;
+}
+
+.full {
   width: 70px;
 }
 

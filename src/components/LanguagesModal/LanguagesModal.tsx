@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import styles from './LanguagesModal.module.scss';
 import { LanguagesModalProps } from './LanguagesModal.props';
-import { languagesList } from '../../languages/languages';
+import { languagesList, LanguagesSupportList } from '../../languages/languages';
 import { createPortal } from 'react-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ISearch } from '../../interfaces/search.interface';
@@ -14,6 +14,11 @@ import { Icon } from '../Icon/Icon';
 export const LanguagesModal = ({ current, close, forLang, ...props }: LanguagesModalProps): JSX.Element => {
   const { register, setFocus, handleSubmit, watch } = useForm<ISearch>({ defaultValues: { search: '' } });
   const languages = Object.keys(languagesList);
+  const values = Object.values(LanguagesSupportList);
+  const voices = window.speechSynthesis
+    .getVoices()
+    .map((voice) => voice.lang)
+    .filter((voice) => values.includes(voice));
   const dispatch = useDispatch();
   const typedLang = watch('search').toLowerCase();
   const filtered = languages.filter((lang) => lang.toLowerCase().includes(typedLang));
@@ -44,18 +49,23 @@ export const LanguagesModal = ({ current, close, forLang, ...props }: LanguagesM
             ?
             <p className={styles.err}>No results</p>
             :
-            filtered.map((key) => (
-              <button className={cn(styles.lang, {
-                [styles.chosen]: current === key,
-              })} onClick={() => {
-                if (key !== current) {
-                  dispatch(actions.setLanguage({ direction: forLang, lang: key }));
-                }
-                close(false);
-              }} key={key}>
-                {key}
-              </button>
-            ))
+            filtered.map((key) => {
+              const isIncludes = voices.includes(LanguagesSupportList[key]);
+              return (
+                <button className={cn(styles.lang, {
+                  [styles.chosen]: current === key,
+                  [styles.listen]: isIncludes,
+                })} onClick={() => {
+                  if (key !== current) {
+                    dispatch(actions.setLanguage({ direction: forLang, lang: key }));
+                  }
+                  close(false);
+                }} key={key}>
+                  {key}
+                  {isIncludes ? <Icon type='listen' /> : null}
+                </button>
+              );
+            })
         }
       </div>
     </div>, document.getElementById("modal")!
