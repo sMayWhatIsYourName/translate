@@ -17,17 +17,15 @@ import { LanguagesSupportList } from '../../languages/languages';
 // const availableVoices = speechSynthesis
 //   .getVoices()
 //   .map((voice) => voice.lang);
-const voices = window.speechSynthesis.getVoices();
-console.log(voices, 'VOICES');
-const availableVoices = window.speechSynthesis
-  .getVoices()
-  .map((voice) => voice.lang);
-console.log(availableVoices, 'VOICES LANG');
 
 
 export const Form = memo((props: FormProps): JSX.Element => {
   const { from, to } = useSelector((state: ITranslation) => state.current);
   const isLoading = useSelector((state: ITranslation) => state.isLoading);
+  const availableVoices = window.speechSynthesis
+    .getVoices()
+    .map((voice) => voice.lang);
+  console.log(availableVoices);
   const [isToSpeak, setIsToSpeak] = useState(false);
   const [isFromSpeak, setIsFromSpeak] = useState(false);
   const { register, setFocus, handleSubmit, watch, resetField, setValue } = useForm<IForm>({ defaultValues: { text: from.text } });
