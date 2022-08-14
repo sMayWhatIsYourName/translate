@@ -14,11 +14,6 @@ import { AppDispatch } from '../../slices';
 import { fetchTranslate } from '../../slices/translator.slice';
 import { LanguagesSupportList } from '../../languages/languages';
 
-// const availableVoices = speechSynthesis
-//   .getVoices()
-//   .map((voice) => voice.lang);
-
-
 export const Form = memo((props: FormProps): JSX.Element => {
   const { from, to } = useSelector((state: ITranslation) => state.current);
   const isLoading = useSelector((state: ITranslation) => state.isLoading);
@@ -34,8 +29,6 @@ export const Form = memo((props: FormProps): JSX.Element => {
   const onSubmit: SubmitHandler<IForm> = ({ text }) => {
     dispatch(fetchTranslate({ to: to.lang, text }));
   };
-  console.log(availableVoices.includes(LanguagesSupportList[to.lang]),'Есть ли to?');
-  console.log(availableVoices.includes(LanguagesSupportList[from.lang]), 'Есть ли from?');
   useEffect(() => {
     setFocus('text');
   })
