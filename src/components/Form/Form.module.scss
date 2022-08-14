@@ -57,8 +57,8 @@
   width: 70px;
 }
 
-.btn {
-  padding: 0;
+.btn:disabled {
+  cursor: not-allowed;
 }
 
 .btn:hover {
