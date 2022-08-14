@@ -20,7 +20,6 @@ export const Form = memo((props: FormProps): JSX.Element => {
   const availableVoices = window.speechSynthesis
     .getVoices()
     .map((voice) => voice.lang);
-  console.log(availableVoices);
   const [isToSpeak, setIsToSpeak] = useState(false);
   const [isFromSpeak, setIsFromSpeak] = useState(false);
   const { register, setFocus, handleSubmit, watch, resetField, setValue } = useForm<IForm>({ defaultValues: { text: from.text } });
