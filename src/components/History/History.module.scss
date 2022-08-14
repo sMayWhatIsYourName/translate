@@ -1,14 +1,17 @@
 .history {
-  padding: 0px 20px 30px 20px;
-  box-sizing: border-box;
-  background-color: #111619;
+  scrollbar-color: #7961fb #1e2225;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 20px 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #7961FB #1E2225;
-  scrollbar-gutter: stable;
+
+  box-sizing: border-box;
+  padding: 0 20px 30px;
+
+  background-color: #111619;
 }
 
 @media screen and (max-width: 1024px) {
@@ -19,8 +22,8 @@
 
 @media screen and (max-width: 1200px) {
   .history {
-    padding: 0;
     height: 700px;
+    padding: 0;
   }
 }
 

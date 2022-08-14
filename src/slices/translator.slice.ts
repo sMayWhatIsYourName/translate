@@ -15,7 +15,7 @@ export const fetchTranslate = createAsyncThunk(
     const translatedText = await axios.request(options.getTranslateOpts(languagesList[to], text));
     const lang = entries.find(([_key, value]) => value === currentLanguage.data.lang);
     if (lang === undefined) {
-      throw new Error('Не распознанный язык')!
+      throw new Error('Не распознанный язык');
     }
     return {
       from: {

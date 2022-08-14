@@ -1,15 +1,18 @@
 .menu {
   display: none;
-  color: #fff;
-  padding: 0 15px;
+
   box-sizing: border-box;
+  padding: 0 15px;
+
+  color: #fff;
 }
 
 .menuWrapper {
   padding: 23px 0;
 }
 
-.categories, .history {
+.categories,
+.history {
   display: none;
 }
 
@@ -22,11 +25,11 @@
     display: grid;
     grid-template-columns: 50px;
   }
-  
+
   .full {
     grid-template-columns: 50px 250px;
   }
-  
+
   .categories {
     display: block;
   }
@@ -43,6 +46,7 @@
     position: absolute;
     right: 0;
     left: 80px;
+
     height: 700px;
   }
 

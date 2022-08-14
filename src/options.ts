@@ -1,4 +1,4 @@
-export default {
+const opts = {
   getDetectOpts: (text: string) => ({
     method: 'GET',
     url: 'https://translo.p.rapidapi.com/api/v3/detect',
@@ -24,4 +24,6 @@ export default {
       data: encodedParams
     };
   },
-}
+};
+
+export default opts;

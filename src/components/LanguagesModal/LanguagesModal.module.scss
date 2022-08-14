@@ -1,30 +1,37 @@
 .modal {
-  background-color: #090E11;
-  width: 100%;
   overflow-y: auto;
+
   // gap: 5px;
   box-sizing: border-box;
-  padding: 20px 20px;
+  width: 100%;
+  padding: 20px;
+
+  background-color: #090e11;
 }
 
 .search {
   display: block;
-  width: 100%;
+
   box-sizing: border-box;
+  width: 100%;
   padding: 10px;
+
+  font-size: 16px;
+  color: #fff;
+
+  background-color: transparent;
   border: none;
   outline: none;
-  color: #fff;
-  font-size: 16px;
-  background-color: transparent;
 }
 
 .form {
   display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid #fff;
   align-items: center;
+  justify-content: space-between;
+
   margin-bottom: 10px;
+
+  border-bottom: 2px solid #fff;
 }
 
 .wrapper {
@@ -35,28 +42,31 @@
 .lang {
   display: flex;
   align-items: center;
-  margin: 0;
-  font-size: 14px;
-  width: 170px;
-  padding-left: 10px;
+
   box-sizing: border-box;
+  width: 170px;
   height: 30px;
+  margin: 0;
+  padding-left: 10px;
+
+  font-size: 14px;
   line-height: 100%;
   color: #fff;
 }
 
 .err {
   margin: 0;
+
   font-size: 25px;
   color: #fff;
 }
 
 .lang:hover {
-  background-color: #7961FB;
+  background-color: #7961fb;
 }
 
 .chosen {
-  background-color: #7961FB;
+  background-color: #7961fb;
 }
 
 @media screen and (max-width: 770px) {
@@ -79,6 +89,7 @@
 @media screen and (min-width: 1024px) {
   .wrapper {
     column-count: 6;
+
     height: 720px;
   }
 }

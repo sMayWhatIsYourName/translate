@@ -12,6 +12,13 @@ import { FormProps } from './Form.props';
 import { IForm } from '../../interfaces/form.interface';
 import { AppDispatch } from '../../slices';
 import { fetchTranslate } from '../../slices/translator.slice';
+import { LanguagesSupportList } from '../../languages/languages';
+
+const availableVoices = speechSynthesis
+  .getVoices()
+  .map((voice) => voice.lang);
+console.log(availableVoices);
+
 
 export const Form = memo((props: FormProps): JSX.Element => {
   const { from, to } = useSelector((state: ITranslation) => state.current);
@@ -24,6 +31,7 @@ export const Form = memo((props: FormProps): JSX.Element => {
   const onSubmit: SubmitHandler<IForm> = ({ text }) => {
     dispatch(fetchTranslate({ to: to.lang, text }));
   };
+  console.log(availableVoices.includes(LanguagesSupportList[to.lang]));
   useEffect(() => {
     setFocus('text');
   })
@@ -54,18 +62,17 @@ export const Form = memo((props: FormProps): JSX.Element => {
               }}>
                 <Icon type='copy' />
               </button>
-              <button type='button' className={styles.btn} onClick={() => {
-                if (speechSynthesis.speaking) {
-                  return;
-                }
+              <button type='button' disabled={!availableVoices.includes(LanguagesSupportList[from.lang])} className={styles.btn} onClick={() => {
                 if (isFromSpeak) {
                   speechSynthesis.cancel();
                   setIsFromSpeak(false);
+                } else if (speechSynthesis.speaking) {
+                  return;
                 } else {
                   const voices = speechSynthesis.getVoices();
                   const utterance = new SpeechSynthesisUtterance(text);
                   utterance.voice = voices[0];
-                  utterance.lang = 'ru';
+                  utterance.lang = LanguagesSupportList[from.lang];
                   speechSynthesis.speak(utterance);
                   setIsFromSpeak(true);
                   utterance.addEventListener('end', () => {
@@ -97,18 +104,18 @@ export const Form = memo((props: FormProps): JSX.Element => {
               }}>
                 <Icon type='copy' />
               </button>
-              <button type='button' className={styles.btn} onClick={() => {
-                if (speechSynthesis.speaking) {
-                  return;
-                }
+              <button type='button' disabled={!availableVoices.includes(LanguagesSupportList[to.lang])} className={styles.btn} onClick={() => {
                 if (isToSpeak) {
                   speechSynthesis.cancel();
                   setIsToSpeak(false);
+                } else if (speechSynthesis.speaking) {
+                  return;
                 } else {
                   const voices = speechSynthesis.getVoices();
                   const utterance = new SpeechSynthesisUtterance(to.text);
                   utterance.voice = voices[0];
-                  utterance.lang = 'ru';
+                  utterance.lang = LanguagesSupportList[to.lang];
+                  console.log(utterance.lang);
                   speechSynthesis.speak(utterance);
                   setIsToSpeak(true);
                   utterance.addEventListener('end', () => {

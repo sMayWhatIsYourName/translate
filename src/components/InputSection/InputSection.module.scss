@@ -1,27 +1,28 @@
 .wrapper {
-  padding: 25px 50px 30px 50px;
   box-sizing: border-box;
+  padding: 25px 50px 30px;
 }
 
 .languages {
-  width: 205px;
-  padding-left: 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   box-sizing: border-box;
+  width: 205px;
   margin-bottom: 20px;
+  padding-left: 30px;
 }
 
 .lang {
-  color: #fff;
   font-size: 16px;
   font-weight: 500;
+  color: #fff;
 }
 
 @media screen and (max-width: 1024px) {
   .wrapper {
-    padding-left: 0;
     padding-right: 10px;
+    padding-left: 0;
   }
 }

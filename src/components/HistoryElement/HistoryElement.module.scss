@@ -1,39 +1,46 @@
 .element {
-  padding: 25px;
-  box-sizing: border-box;
-  border-radius: 15px;
   cursor: pointer;
+
+  box-sizing: border-box;
+  padding: 25px;
+
+  border-radius: 15px;
 }
 
 .element:hover {
+  background-color: #1e2225;
+
   transition: 0.3s;
-  background-color: #1E2225;
 }
 
 .text {
-  color: #B3B4B6;
-  margin: 0;
-  white-space: nowrap;
   overflow: hidden;
+
+  margin: 0;
+
+  color: #b3b4b6;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .from {
-  font-weight: 500;
   margin-bottom: 5px;
+
+  font-weight: 500;
   color: #fff;
 }
 
 .inner {
   display: flex;
-  align-items: center;
   gap: 0 10px;
+  align-items: center;
   justify-content: space-between;
 }
 
 .outter {
   display: flex;
   justify-content: space-between;
+
   margin-top: 15px;
 }
 

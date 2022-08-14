@@ -7,14 +7,16 @@
   fill: transparent;
 }
 
-.btn svg:hover {
-  fill: red;
-  scale: 1.1;
-  transition: 0.3s;
-  stroke: red;
-}
-
 .active svg {
   fill: red;
   stroke: red;
+}
+
+.btn svg:hover {
+  fill: red;
+  stroke: red;
+
+  transition: 0.3s;
+
+  scale: 1.1;
 }

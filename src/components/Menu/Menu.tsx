@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 import { Icon } from '../Icon/Icon';
 import styles from './Menu.module.scss';
@@ -16,7 +16,7 @@ export const Menu = (props: MenuProps): JSX.Element => {
   return (
     <div className={cn(styles.menu, {
       [styles.full]: isOpen,
-    })}>
+    })} {...props}>
       <div className={styles.menuWrapper}>
         {
           isOpen === 'menu'

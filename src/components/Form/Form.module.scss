@@ -1,8 +1,9 @@
 .field {
-  padding: 30px 30px 20px 30px;
-  background-color: #1E2225;
-  border-radius: 15px;
   box-sizing: border-box;
+  padding: 30px 30px 20px;
+
+  background-color: #1e2225;
+  border-radius: 15px;
 }
 
 .m10 {
@@ -11,26 +12,33 @@
 
 .input {
   resize: none;
-  padding: 0;
+
   width: 100%;
+  padding: 0;
+
   background-color: transparent;
 }
 
 .loader {
-  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  width: 100%;
   height: 140px;
 }
 
-.result, .input {
-  white-space: pre-wrap;
-  color: #fff;
-  font-size: 14px;
-  border: none;
-  height: 140px;
+.result,
+.input {
   overflow-y: auto;
+
+  height: 140px;
+
+  font-size: 14px;
+  color: #fff;
+  white-space: pre-wrap;
+
+  border: none;
 }
 
 .input:focus {
@@ -44,8 +52,9 @@
 
 .inner {
   display: flex;
-  width: 70px;
   justify-content: space-between;
+
+  width: 70px;
 }
 
 .btn {
@@ -54,19 +63,22 @@
 
 .btn:hover {
   transition: 0.3s;
+
   scale: 1.1;
 }
 
 .btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 80px;
   height: 80px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background-color: #1E2225;
   padding: 5px;
+
+  background-color: #1e2225;
+  border-radius: 50%;
 }
 
 .wrapperResult {
@@ -77,14 +89,16 @@
 .translate {
   width: 70px;
   height: 70px;
+
+  background-color: #1e2225;
+  border: 3px solid #7961fb;
   border-radius: 50%;
-  background-color: #1E2225;
-  border: 3px solid #7961FB;
 }
 
 .form {
-  height: calc(100% - 27px - 20px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  height: calc(100% - 27px - 20px);
 }
