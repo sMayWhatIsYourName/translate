@@ -19,7 +19,9 @@ export const Form = memo((props: FormProps): JSX.Element => {
   const isLoading = useSelector((state: ITranslation) => state.isLoading);
   const voices = window.speechSynthesis.getVoices();
   const toVoice = voices.filter((voice) => voice.lang === LanguagesSupportList[to.lang])[0];
+  console.log(toVoice, 'to');
   const fromVoice = voices.filter((voice) => voice.lang === LanguagesSupportList[from.lang])[0];
+  console.log(fromVoice, 'from');
 
   const [isToSpeak, setIsToSpeak] = useState(false);
   const [isFromSpeak, setIsFromSpeak] = useState(false);
